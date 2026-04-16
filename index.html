@@ -3,35 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sociedad de Médicos del Mañana: organización de salud que brinda atención médica gratuita y apoyo humanitario a comunidades vulnerables en El Salvador.">
+
   <title>Sociedad de Médicos del Mañana</title>
 
-  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Sociedad de Médicos del Mañana">
   <meta property="og:description" content="Unidos por una comunidad médica en crecimiento.">
   <meta property="og:image" content="https://sociedadmed.netlify.app/imagenes/MDMBACKWEB.png">
   <meta property="og:url" content="https://sociedadmdm.org/">
   <meta property="og:type" content="website">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sociedad de Médicos del Mañana">
   <meta name="twitter:description" content="Unidos por una comunidad médica en crecimiento.">
   <meta name="twitter:image" content="https://sociedadmed.netlify.app/imagenes/MDMBACKWEB.png">
 
-  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,15 +42,15 @@
 </head>
 <body>
 
-  <!-- ENCABEZADO -->
-  <header class="header">
+  <header id="inicio" class="header">
     <div class="menu container" data-aos="fade-down">
       <a href="#inicio" class="logo">SMDM</a>
-      <input type="checkbox" id="menu" />
-      <label for="menu">
-        <img src="imagenes/menu.png" class="menu-icono" alt="Abrir menú">
-      </label>
-      <nav class="navbar">
+
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="navbar" aria-label="Abrir menú">
+        <img src="imagenes/menu.png" class="menu-icono" alt="">
+      </button>
+
+      <nav id="navbar" class="navbar">
         <ul>
           <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
           <li><a href="#mision">Misión y visión</a></li>
@@ -61,19 +59,19 @@
           <li><a href="#programa">Programas activos</a></li>
           <li><a href="#contactos">Contacto</a></li>
           <li><a href="#nostrajunta">Junta directiva</a></li>
-          <li><a href="#news">Noticias</a></li>
-          <li><a href="https://www.instagram.com/sociedad_mdm/" target="_blank">Instagram</a></li>
+          <li><a href="#news">Actividades y noticias</a></li>
+          <li><a href="#dona">Dona</a></li>
+          <li><a href="https://www.instagram.com/sociedad_mdm/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         </ul>
       </nav>
     </div>
 
     <div class="header-content container" data-aos="fade-up" data-aos-delay="200">
-      <h1 id="inicio">Sociedad de Médicos del Mañana</h1>
+      <h1>Sociedad de Médicos del Mañana</h1>
       <p>"Pasión por curar, compromiso para enseñar".</p>
     </div>
   </header>
 
-  <!-- QUIÉNES SOMOS -->
   <section class="EquipoSMDM">
     <div class="EquipoSMDM-content container" data-aos="fade-up">
       <h2 id="quienes-somos">¿Quiénes somos?</h2>
@@ -98,7 +96,6 @@
     </div>
   </section>
 
-  <!-- MISIÓN Y VISIÓN -->
   <section class="misionvision">
     <div class="misionvision-content container">
       <div class="misionvision-caja" data-aos="fade-right">
@@ -116,8 +113,7 @@
       </div>
     </div>
   </section>
-
-  <!-- NUESTRO EQUIPO -->
+  
   <section class="EquipoSMDM">
     <div class="EquipoSMDM-content container" data-aos="fade-down">
       <h2 id="nuestroequipo">Nuestro equipo</h2>
@@ -127,17 +123,17 @@
     </div>
 
     <div class="equipo-grupo">
-      <div class="médicos" data-aos="fade-up" data-aos-delay="100">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <img src="imagenes/DoctoresWEB.png" alt="Doctores en medicina">
         <h3>Doctores en medicina</h3>
         <p>Evalúan, diagnostican y tratan enfermedades, velando por la salud integral de cada paciente que atendemos.</p>
       </div>
-      <div class="médicos" data-aos="fade-up" data-aos-delay="200">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <img src="imagenes/QuimicaWEB.png" alt="Licenciados en enfermería">
         <h3>Licenciados en enfermería</h3>
         <p>Son el pilar del cuidado directo: apoyan en procedimientos, controles y educación en salud con empatía y dedicación.</p>
       </div>
-      <div class="médicos" data-aos="fade-up" data-aos-delay="300">
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
         <img src="imagenes/PsicologoWEB.png" alt="Licenciados en psicología">
         <h3>Licenciados en psicología</h3>
         <p>Atienden la salud mental y emocional de nuestros pacientes, escuchando, orientando y sembrando esperanza en cada consulta.</p>
@@ -149,7 +145,6 @@
     </p>
   </section>
 
-  <!-- QUÉ HACEMOS -->
   <main class="services">
     <div class="services-content container" data-aos="fade-down">
       <h2 id="que-hacemos">¿Qué hacemos?</h2>
@@ -171,7 +166,6 @@
     </div>
   </main>
 
-  <!-- PROGRAMAS ACTIVOS -->
   <section class="programa">
     <div class="programa-content container" data-aos="fade-down">
       <h2 id="programa">Programas activos</h2>
@@ -181,7 +175,7 @@
     </div>
 
     <div class="programa-grupo">
-      <div class="programas" data-aos="fade-up" data-aos-delay="200">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <img src="imagenes/ABIERTAA.png" alt="Actividades abiertas">
         <h3>Actividades abiertas</h3>
         <p>
@@ -189,7 +183,7 @@
         </p>
       </div>
 
-      <div class="programas" data-aos="fade-up" data-aos-delay="300">
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
         <img src="imagenes/ABRAZO.png" alt="Abrazo intergeneracional">
         <h3>Abrazo intergeneracional</h3>
         <p>
@@ -197,7 +191,7 @@
         </p>
       </div>
 
-      <div class="programas" data-aos="fade-up" data-aos-delay="400">
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
         <img src="imagenes/RISAS.png" alt="Risas que sanan">
         <h3>Risas que sanan</h3>
         <p>
@@ -213,38 +207,54 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section class="contacto" data-aos="fade-up">
     <div class="contacto-container container">
       <h2 id="contactos" data-aos="fade-down">Comunícate con nosotros</h2>
       <p class="txt-p" data-aos="fade-up" data-aos-delay="100">
         ¿Querés colaborar, unirte como voluntario o simplemente saber más sobre nuestro trabajo? Completa el formulario y nos pondremos en contacto contigo.
       </p>
+
       <form action="https://formsubmit.co/sociedadmedicosdelmanana@gmail.com" method="POST" class="formulario-contacto" data-aos="fade-up" data-aos-delay="200">
-        <input type="text" name="nombre" placeholder="Tu nombre completo" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="tel" name="telefono" placeholder="Número de teléfono (opcional)">
-        <textarea name="mensaje" rows="4" placeholder="Dejanos tu comentario o consulta" required></textarea>
+        <div class="form-group">
+          <label for="nombre">Tu nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: María López" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Ej: maria@correo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Número de teléfono <span class="opcional">(opcional)</span></label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej: +503 7000 0000">
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Comentario o consulta</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
+        </div>
         <button type="submit">Enviar mensaje</button>
       </form>
     </div>
   </section>
 
-  <!-- JUNTA DIRECTIVA -->
   <section class="equipo-junta" data-aos="fade-up" data-aos-delay="300">
     <div class="equipo-junta-content container">
       <h2 id="nostrajunta" data-aos="fade-down">Nuestra Junta Directiva</h2>
 
       <div class="equipo-grupo">
-        <div class="junta" data-aos="fade-up" data-aos-delay="400">
+        <div class="card" data-aos="fade-up" data-aos-delay="400">
           <img src="imagenes/Erickjunta.png" alt="Erick Deras, Presidente">
           <h3>Erick Deras</h3>
           <p>Presidente y fundador de la Sociedad de Médicos del Mañana.</p>
         </div>
 
-        <div class="junta" data-aos="fade-up" data-aos-delay="500">
-          <img src="imagenes/Raqueljunta.png" alt="Raquel Vásquez, Gestora de proyectos">
-
+         <div class="card" data-aos="fade-up" data-aos-delay="500">
+          <img src="imagenes/Gusjunta.png" alt="Gustavo Lovo, Vicepresidente">
+          <h3>Gustavo Lovo</h3>
+          <p>Vicepresidente de la Sociedad de Médicos del Mañana.</p>
+        </div>
+      </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="500">
+          <img src="imagenes/raqueljunta.png" alt="Raquel Vásquez, Gestora de proyectos">
           <h3>Raquel Vásquez</h3>
           <p>Gestora de proyectos de la Sociedad de Médicos del Mañana.</p>
         </div>
@@ -258,27 +268,78 @@
     </div>
   </section>
 
-  <!-- BLOG / NOTICIAS -->
   <section class="blog-seccion" data-aos="fade-up">
     <div class="blog-seccion-content container">
-      <h2 id="news">Noticias</h2>
+      <h2 id="news">Actividades y Noticias</h2>
       <p class="txt-p">
-        Aquí encontrarás las últimas actividades y noticias de la Sociedad de Médicos del Mañana.
+        Aquí encontrarás nuestras actividades y noticias.
       </p>
 
       <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
-        <div class="blog-1">
+        <div class="card blog-1">
           <img src="imagenes/EquipoSMDM.png" alt="Brigada médica en Tutunichapa">
           <h3>Brigada médica y psicosocial en comunidad Tutunichapa I, en conjunto con ACNUR</h3>
           <p>
-            Brindamos atención médica general a más de 35 personas en la comunidad Tutunichapa I, San Salvador. La actividad incluyó consulta psicosocial y educación en salud, en un proyecto piloto ejecutado por nuestro equipo junto a ACNUR para mejorar el bienestar integral de la comunidad.
+Se brindó atención médica general en la comunidad Tutunichapa I, San Salvador, en el marco de un proyecto piloto enfocado en el fortalecimiento del bienestar integral de la población. La jornada incluyó consulta psicosocial y actividades de educación en salud, ejecutadas por nuestro equipo en articulación con ACNUR, consolidando un abordaje multidisciplinario orientado a las necesidades de la comunidad.          </p>
+    </div>
+   <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="card blog-1">
+          <img src="imagenes/aliabuemdma.png" alt="Visita médica navideña al "Hogar de Ancianas Nuestra Señora Reina de la Paz">
+          <h3>Visita médica navideña al Hogar de Ancianas Nuestra Señora Reina de la Paz</h3>
+          <p>
+Se realizó una visita al Hogar de Ancianas Nuestra Señora Reina de la Paz en vísperas de la Navidad, en el marco de una jornada orientada al cuidado integral y al acompañamiento humano de sus residentes. Durante la actividad, se brindaron consultas médicas generales y se entregaron donaciones en especie, contribuyendo así a cubrir necesidades prioritarias del hogar y a mejorar la calidad de vida de las adultas mayores.          </p>
+    </div>    
+        
+    </div>
+          <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="card blog-1">
+          <img src="imagenes/niñosmdm2025.png" alt="Visita al Hogar del Niño San Vicente de Paul">
+          <h3> Visita psicológica y recreativa al Hogar del Niño San Vicente de Paul, en conjunto con Cruz Roja Juventud</h3>
+          <p>
+            Se realizó una visita al Hogar del Niño San Vicente de Paúl con el objetivo de brindar acompañamiento psicológico a los niños residentes. A través de charlas y actividades lúdicas, se promovió el fortalecimiento de la salud mental y el bienestar emocional de los menores. Asimismo, en coordinación con Cruz Roja Juventud, se llevó a cabo la entrega de juguetes como parte del compromiso institucional con la niñez y su desarrollo integral.
           </p>
         </div>
-      </div>
+      <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="card blog-1">
+          <img src="imagenes/fristtime.png" alt="al Hogar de Ancianas Nuestra Señora Reina de la Paz">
+          <h3> Visita médica al Hogar de Ancianas Nuestra Señora Reina de la Paz.</h3>
+          <p>
+            Se llevó a cabo nuestra primera actividad, en la cual visitamos al Hogar de Ancianas Nuestra Señora Reina de la Paz, desarrollando una jornada centrada en el cuidado integral y el acompañamiento cercano de sus residentes. Durante la actividad, se ofrecieron consultas médicas generales y se realizó la entrega de donaciones en especie, contribuyendo a la atención de sus necesidades y al fortalecimiento de su bienestar.
+          </p>
+        
     </div>
+    
   </section>
+<section class="donaciones" id="dona">
+  <div class="donaciones-content container" data-aos="fade-up">
+    <h2>Donaciones</h2>
+    <p class="txt-p">
+      Tu apoyo nos permite llevar atención médica gratuita, medicamentos y esperanza a comunidades que más lo necesitan.
+    </p>
 
-  <!-- PIE DE PÁGINA -->
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+      <input type="hidden" name="hosted_button_id" value="L78Z8EPZA4B3N" />
+      
+      <input type="image" 
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" 
+        border="0" 
+        name="submit" 
+        title="Donar con PayPal" 
+        alt="Donar con PayPal" />
+
+      <img alt="" border="0" 
+        src="https://www.paypal.com/en_SV/i/scr/pixel.gif" 
+        width="1" height="1" />
+    </form>
+
+  </div>
+  <div class="imagenes-grupo">
+  <div class="imagen-item">
+    <img src="imagenes/carrusel5.png" alt="Apoyo comunitario">
+  </div>
+</div>
+</section>
+
   <footer class="footer" data-aos="fade-up" data-aos-delay="200">
     <div class="footer-content container">
       <div class="link">
@@ -292,18 +353,23 @@
           <li><a href="#programa">Programas activos</a></li>
           <li><a href="#contactos">Contacto</a></li>
           <li><a href="#nostrajunta">Junta directiva</a></li>
-          <li><a href="#news">Noticias</a></li>
+          <li><a href="#news">Actividades y Noticias</a></li>
+          <li><a href="#dona">Dona</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
+    AOS.init({ duration: 1000, once: true });
+
+    const toggle = document.getElementById('menu-toggle');
+    const navbar = document.getElementById('navbar');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = navbar.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
     });
   </script>
 

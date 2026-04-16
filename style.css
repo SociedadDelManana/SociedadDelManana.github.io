@@ -21,7 +21,39 @@ body {
   margin: 0 auto;
 }
 
-/* ===================== HEADER ===================== */
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
 .header {
   background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(imagenes/BACKGROUND4WEB.png);
   background-position: center bottom;
@@ -69,17 +101,17 @@ body {
   color: #60c0da;
 }
 
-#menu {
+.menu-toggle {
   display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .menu-icono {
   width: 25px;
-}
-
-.menu label {
-  cursor: pointer;
-  display: none;
+  display: block;
 }
 
 .header-content {
@@ -97,11 +129,10 @@ body {
 .header-content p {
   font-size: 16px;
   color: #c5c5c5;
-  padding: 0 250px;
-  margin-bottom: 25px;
+  max-width: 700px;
+  margin: 0 auto 25px;
 }
 
-/* ===================== QUIÉNES SOMOS ===================== */
 .EquipoSMDM {
   padding: 50px 0;
   background-color: #E1E2E6;
@@ -125,8 +156,9 @@ body {
 .txt-p {
   font-size: 16px;
   color: #414247;
-  padding: 0 250px;
-  margin-bottom: 35px;
+  max-width: 700px;
+  margin: 0 auto 35px;
+  padding: 0 20px;
 }
 
 .imagenes-grupo {
@@ -159,7 +191,6 @@ body {
   border-radius: 15px;
 }
 
-/* ===================== MISIÓN Y VISIÓN ===================== */
 .misionvision {
   background-color: #E1E2E6;
   padding: 50px 0;
@@ -196,13 +227,10 @@ body {
 }
 
 .misionvision-caja .txt-p {
-  font-size: 16px;
-  color: #414247;
   padding: 0;
   margin-bottom: 0;
 }
 
-/* ===================== EQUIPO ===================== */
 .equipo-grupo {
   display: flex;
   justify-content: center;
@@ -212,41 +240,10 @@ body {
   padding: 0 20px;
 }
 
-.médicos {
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.equipo-grupo .card {
   width: 300px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.médicos:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-.médicos img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.médicos h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.médicos p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* ===================== QUÉ HACEMOS ===================== */
 .services {
   background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(imagenes/BackGround222.jpg);
   background-position: center center;
@@ -288,7 +285,6 @@ body {
   font-size: 18px;
 }
 
-/* ===================== PROGRAMAS ===================== */
 .programa {
   padding: 50px 0;
   background-color: #E1E2E6;
@@ -307,13 +303,6 @@ body {
   margin-bottom: 20px;
 }
 
-.programa-content .txt-p {
-  font-size: 16px;
-  color: #414247;
-  padding: 0 50px;
-  margin-bottom: 35px;
-}
-
 .programa-grupo {
   display: flex;
   justify-content: center;
@@ -324,40 +313,10 @@ body {
   padding: 0 20px;
 }
 
-.programas {
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.programa-grupo .card {
   width: 300px;
   min-width: 280px;
   flex: 0 0 auto;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.programas:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-.programas img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.programas h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.programas p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.4;
 }
 
 .programa-texto-final {
@@ -365,14 +324,8 @@ body {
   margin-top: 40px;
 }
 
-.programa-texto-final .txt-p {
-  padding: 0 50px;
-  color: #414247;
-}
-
-/* ===================== CONTACTO ===================== */
 .contacto {
-  background-color: #E1E2E6;
+  background-color: #f5f5f5;
   padding: 50px 0;
 }
 
@@ -388,19 +341,31 @@ body {
   margin-bottom: 20px;
 }
 
-.contacto-container .txt-p {
-  font-size: 16px;
-  color: #414247;
-  padding: 0 50px;
-  margin-bottom: 35px;
-}
-
 .formulario-contacto {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #323337;
+}
+
+.form-group .opcional {
+  font-weight: 400;
+  color: #888;
+  font-size: 13px;
 }
 
 .formulario-contacto input,
@@ -429,7 +394,6 @@ body {
   background-color: #49abc4;
 }
 
-/* ===================== JUNTA DIRECTIVA ===================== */
 .equipo-junta {
   padding: 50px 0;
   background-color: #E1E2E6;
@@ -445,38 +409,8 @@ body {
   padding: 0 20px;
 }
 
-.junta {
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.equipo-junta .card {
   width: 250px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.junta:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-.junta img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.junta h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.junta p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.4;
 }
 
 .mensaje-final {
@@ -484,7 +418,6 @@ body {
   text-align: center;
 }
 
-/* ===================== BLOG / NOTICIAS ===================== */
 .blog-seccion {
   padding: 50px 0;
   background-color: #ffffff;
@@ -511,42 +444,9 @@ body {
 }
 
 .blog-1 {
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 400px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.blog-1:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-.blog-1 img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.blog-1 h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #333;
-  font-family: 'Poppins', sans-serif;
-}
-
-.blog-1 p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.4;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* ===================== FOOTER ===================== */
 .footer {
   padding: 100px 0;
   background-color: #000000;
@@ -574,18 +474,10 @@ body {
   color: #60c0da;
 }
 
-/* ===================== RESPONSIVE ===================== */
 @media (max-width: 991px) {
   .header-content h1 {
     font-size: 40px;
     line-height: 50px;
-  }
-
-  .header-content p,
-  .txt-p,
-  .programa-content .txt-p,
-  .contacto-container .txt-p {
-    padding: 0 20px;
   }
 
   .menu {
@@ -594,8 +486,11 @@ body {
     align-items: flex-start;
   }
 
-  .menu label {
-    display: initial;
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
   }
 
   .menu .navbar {
@@ -609,6 +504,10 @@ body {
     z-index: 10;
   }
 
+  .menu .navbar.open {
+    display: flex;
+  }
+
   .menu .navbar ul {
     flex-direction: column;
     width: 100%;
@@ -619,10 +518,6 @@ body {
     text-align: center;
     margin: 10px 0;
     float: none;
-  }
-
-  #menu:checked ~ nav {
-    display: flex;
   }
 
   .header-content {
@@ -645,8 +540,7 @@ body {
     width: 80%;
   }
 
-  .médicos img,
-  .junta img {
+  .card img {
     width: 120px;
   }
 
@@ -683,4 +577,19 @@ body {
     font-size: 36px;
     line-height: 48px;
   }
+}
+.donaciones-content {
+  text-align: center;
+}
+
+.donaciones-content form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.donaciones-content input[type="image"] {
+  display: block;
+  margin: 0 auto;
 }
