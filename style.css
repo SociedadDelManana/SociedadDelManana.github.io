@@ -717,3 +717,55 @@ img { display: block; }
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+
+/* ============================================================
+   PÁGINA DE DONACIONES
+   ============================================================ */
+
+.impacto-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  overflow: visible;
+}
+
+.impacto-card img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.impacto-card .card-tag {
+  font-size: 13px;
+  padding: 4px 14px;
+}
+
+.impacto-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.impacto-card p {
+  font-size: 13px;
+  color: var(--texto-sub);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.cards-grid.impacto-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+@media (max-width: 991px) {
+  .cards-grid.impacto-grid {
+    grid-template-columns: 1fr;
+  }
+}
