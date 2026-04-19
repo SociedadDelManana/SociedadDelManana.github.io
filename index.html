@@ -3,218 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sociedad de Médicos del Mañana: organización de salud que brinda atención médica gratuita y apoyo humanitario a comunidades vulnerables en El Salvador.">
-
   <title>Sociedad de Médicos del Mañana</title>
-
-<link rel="apple-touch-icon" sizes="180x180" href="imagenes/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
-<link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
-
+  <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
-
   <meta property="og:title" content="Sociedad de Médicos del Mañana">
   <meta property="og:description" content="Unidos por una comunidad médica en crecimiento.">
   <meta property="og:image" content="https://sociedadmed.netlify.app/imagenes/MDMBACKWEB.png">
   <meta property="og:url" content="https://sociedadmdm.org/">
   <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sociedad de Médicos del Mañana">
-  <meta name="twitter:description" content="Unidos por una comunidad médica en crecimiento.">
-  <meta name="twitter:image" content="https://sociedadmed.netlify.app/imagenes/MDMBACKWEB.png">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Sociedad de Médicos del Mañana",
-    "url": "https://sociedadmdm.org",
-    "logo": "https://sociedadmed.netlify.app/imagenes/MDMBACKWEB.png"
-  }
-  </script>
 </head>
 <body>
 
-  <header id="inicio" class="header">
-    <div class="menu container" data-aos="fade-down">
-      <a href="#inicio" class="logo">SMDM</a>
+
+  <header class="site-header">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">SMDM</a>
 
       <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="navbar" aria-label="Abrir menú">
-        <img src="imagenes/menu.png" class="menu-icono" alt="">
+        <img src="imagenes/menu.png" class="menu-icono" alt="Menú">
       </button>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
-          <li><a href="#mision">Misión y visión</a></li>
-          <li><a href="#nuestroequipo">Nuestro equipo</a></li>
-          <li><a href="#que-hacemos">¿Qué hacemos?</a></li>
-          <li><a href="#programa">Programas activos</a></li>
-          <li><a href="#contactos">Contacto</a></li>
-          <li><a href="#nostrajunta">Junta directiva</a></li>
-          <li><a href="#news">Actividades y noticias</a></li>
-          <li><a href="#dona">Dona</a></li>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="equipo.html">Equipo</a></li>
+          <li><a href="que-hacemos.html">¿Qué hacemos?</a></li>
           <li><a href="https://www.instagram.com/sociedad_mdm/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         </ul>
       </nav>
     </div>
-
-    <div class="header-content container" data-aos="fade-up" data-aos-delay="200">
-      <h1>Sociedad de Médicos del Mañana</h1>
-      <p>"Pasión por curar, compromiso para enseñar".</p>
-    </div>
   </header>
 
-  <section class="EquipoSMDM">
-    <div class="EquipoSMDM-content container" data-aos="fade-up">
-      <h2 id="quienes-somos">¿Quiénes somos?</h2>
-      <p class="txt-p">
-        Somos la Sociedad de Médicos del Mañana, una organización conformada por estudiantes y profesionales de la salud comprometidos con servir a quienes más lo necesitan. Nuestra misión es llevar atención médica gratuita, educación en salud y apoyo humanitario a comunidades vulnerables, trabajando con empatía, solidaridad y excelencia para construir un mejor mañana para El Salvador.
-      </p>
-    </div>
-
-    <div class="imagenes-grupo" data-aos="fade-up" data-aos-delay="200">
-      <div class="imagen-item">
-        <img src="imagenes/BLOG2WEB.png" alt="Actividad de brigada médica">
-      </div>
-      <div class="imagen-item">
-        <img src="imagenes/BLOG1WEB.png" alt="Atención a la comunidad">
-      </div>
-      <div class="imagen-item">
-        <img src="imagenes/EquipoSMDM.png" alt="Equipo SMDM">
-      </div>
-      <div class="imagen-item">
-        <img src="imagenes/BLOG3WEB.png" alt="Entrega de insumos">
-      </div>
+ 
+  <section class="hero">
+    <div class="hero-content container" data-aos="fade-up">
+      <h1>Sociedad de Médicos del Mañana</h1>
+      <p>"Pasión por curar, compromiso para enseñar."</p>
+      <a href="que-hacemos.html" class="btn-primary">Conoce nuestros programas</a>
     </div>
   </section>
 
-  <section class="misionvision">
-    <div class="misionvision-content container">
-      <div class="misionvision-caja" data-aos="fade-right">
-        <h2 id="mision">Misión</h2>
-        <p class="txt-p">
-          Brindar apoyo médico integral a las comunidades más vulnerables, promoviendo la salud y el bienestar como derechos fundamentales. A través de acciones solidarias, educación comunitaria y la provisión de recursos esenciales, buscamos generar un impacto positivo y duradero en la vida de las personas. Nos esforzamos por inspirar a estudiantes de medicina y profesionales de la salud a trabajar unidos para construir un futuro más justo, humano y saludable para todos.
-        </p>
+  <section class="seccion-clara">
+    <div class="container">
+      <div class="seccion-encabezado" data-aos="fade-up">
+        <h2>Actividades y Noticias</h2>
+        <p class="txt-p">Conoce nuestras últimas actividades y el impacto que estamos generando en las comunidades.</p>
       </div>
 
-      <div class="misionvision-caja" data-aos="fade-left" data-aos-delay="200">
-        <h2 id="vision">Visión</h2>
-        <p class="txt-p">
-          Ser una comunidad unida por el compromiso de transformar la salud y el bienestar de nuestra sociedad. Aspiramos a liderar la promoción de la salud integral con un enfoque que va más allá de la atención médica, abordando las necesidades más urgentes de las comunidades vulnerables. A través de la colaboración, el voluntariado y la educación, buscamos crear un legado de solidaridad y cambio positivo, fortaleciendo el vínculo entre la medicina, la sociedad y los profesionales comprometidos con el bienestar común.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  <section class="EquipoSMDM">
-    <div class="EquipoSMDM-content container" data-aos="fade-down">
-      <h2 id="nuestroequipo">Nuestro equipo</h2>
-      <p class="txt-p">
-        En la Sociedad de Médicos del Mañana, cada integrante aporta su conocimiento y vocación de servicio en cada visita. Nuestro equipo está formado por:
-      </p>
-    </div>
+      <div class="cards-grid" data-aos="fade-up" data-aos-delay="100">
 
-    <div class="equipo-grupo">
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="imagenes/DoctoresWEB.png" alt="Doctores en medicina">
-        <h3>Doctores en medicina</h3>
-        <p>Evalúan, diagnostican y tratan enfermedades, velando por la salud integral de cada paciente que atendemos.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="imagenes/QuimicaWEB.png" alt="Licenciados en enfermería">
-        <h3>Licenciados en enfermería</h3>
-        <p>Son el pilar del cuidado directo: apoyan en procedimientos, controles y educación en salud con empatía y dedicación.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <img src="imagenes/PsicologoWEB.png" alt="Licenciados en psicología">
-        <h3>Licenciados en psicología</h3>
-        <p>Atienden la salud mental y emocional de nuestros pacientes, escuchando, orientando y sembrando esperanza en cada consulta.</p>
-      </div>
-    </div>
-
-    <p class="txt-p" data-aos="fade-up" data-aos-delay="400">
-      Gracias a este equipo interdisciplinario, nuestros proyectos no solo curan enfermedades, sino que transforman vidas.
-    </p>
-  </section>
-
-  <main class="services">
-    <div class="services-content container" data-aos="fade-down">
-      <h2 id="que-hacemos">¿Qué hacemos?</h2>
-
-      <div class="services-group">
-        <div class="services-1" data-aos="fade-up" data-aos-delay="100">
-          <img src="imagenes/ESTETOICON.png" alt="Brigadas médicas">
-          <h3>Brigadas médicas</h3>
+        <div class="card">
+          <img src="imagenes/EquipoMDM.jpg" alt="Brigada médica en Tutunichapa">
+          <div class="card-body">
+            <span class="card-tag">Brigada Médica</span>
+            <h3>Brigada médica y psicosocial en comunidad Tutunichapa I, en conjunto con ACNUR</h3>
+            <p>Se brindó atención médica general en la comunidad Tutunichapa I, San Salvador, en el marco de un proyecto piloto enfocado en el fortalecimiento del bienestar integral de la población.</p>
+          </div>
         </div>
-        <div class="services-1" data-aos="fade-up" data-aos-delay="200">
-          <img src="imagenes/PSICOICON.png" alt="Atención psicosocial">
-          <h3>Atención psicosocial</h3>
+
+        <div class="card">
+          <img src="imagenes/aliabumdm.png" alt="Visita médica navideña">
+          <div class="card-body">
+            <span class="card-tag">Visita</span>
+            <h3>Visita médica navideña al Hogar de Ancianas Nuestra Señora Reina de la Paz</h3>
+            <p>Se realizó una visita al Hogar de Ancianas en vísperas de la Navidad. Se brindaron consultas médicas y se entregaron donaciones en especie, contribuyendo al bienestar de las adultas mayores.</p>
+          </div>
         </div>
-        <div class="services-1" data-aos="fade-up" data-aos-delay="300">
-          <img src="imagenes/INSUMOSICON.png" alt="Entrega de insumos">
-          <h3>Entrega de insumos</h3>
+
+        <div class="card">
+          <img src="imagenes/niñosmdm.jpeg" alt="Visita al Hogar del Niño">
+          <div class="card-body">
+            <span class="card-tag">Salud Mental</span>
+            <h3>Visita psicológica y recreativa al Hogar del Niño San Vicente de Paul</h3>
+            <p>A través de charlas y actividades lúdicas, se promovió el fortalecimiento de la salud mental de los niños. En coordinación con Cruz Roja Juventud, se entregaron juguetes.</p>
+          </div>
         </div>
+
+        <div class="card">
+          <img src="imagenes/firsttime.jpeg" alt="Primera actividad SMDM">
+          <div class="card-body">
+            <span class="card-tag">Historia</span>
+            <h3>Nuestra primera actividad: Visita médica al Hogar de Ancianas Reina de la Paz</h3>
+            <p>Se llevó a cabo nuestra primera actividad institucional, en la cual visitamos el Hogar de Ancianas, desarrollando una jornada centrada en el cuidado integral de sus residentes.</p>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </main>
-
-  <section class="programa">
-    <div class="programa-content container" data-aos="fade-down">
-      <h2 id="programa">Programas activos</h2>
-      <p class="txt-p" data-aos="fade-up" data-aos-delay="100">
-        En la Sociedad de Médicos del Mañana desarrollamos programas enfocados en el bienestar integral de las comunidades más vulnerables. Cada proyecto busca generar un impacto real a través de atención médica gratuita, educación en salud, prevención de enfermedades y apoyo humanitario. Conoce nuestros programas y descubre cómo, juntos, estamos construyendo un futuro más saludable y justo para todos.
-      </p>
-    </div>
-
-    <div class="programa-grupo">
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="imagenes/ABIERTAA.png" alt="Actividades abiertas">
-        <h3>Actividades abiertas</h3>
-        <p>
-          Aunque no está enfocado en una población específica, este programa busca generar un impacto real en toda la sociedad. Realizamos brigadas médicas y psicosociales, talleres, conferencias y entregas de insumos esenciales en comunidades vulnerables. Cada actividad es un espacio de aprendizaje, cuidado y transformación donde compartimos conocimiento y brindamos apoyo integral a quienes más lo necesitan.
-        </p>
-      </div>
-
-      <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <img src="imagenes/ABRAZO.png" alt="Abrazo intergeneracional">
-        <h3>Abrazo intergeneracional</h3>
-        <p>
-          Un programa que une generaciones a través de la empatía y el cuidado. Nuestro equipo visita asilos para brindar atención médica gratuita y entregar insumos esenciales, acompañando cada consulta con escucha activa y calidez humana. Creemos que cada visita es un recordatorio de que no están solos y de que su vida sigue siendo valiosa y digna de respeto.
-        </p>
-      </div>
-
-      <div class="card" data-aos="fade-up" data-aos-delay="400">
-        <img src="imagenes/RISAS.png" alt="Risas que sanan">
-        <h3>Risas que sanan</h3>
-        <p>
-          Un programa dedicado a cuidar la salud integral de niños y adolescentes en orfanatos. Nuestro equipo brinda atención médica y psicológica gratuita, junto a talleres emocionales que fortalecen su autoestima, inteligencia emocional y esperanza. Creemos que cada sonrisa es un paso hacia su bienestar interior, y cada palabra de aliento es una semilla de futuro.
-        </p>
-      </div>
-    </div>
-
-    <div class="programa-texto-final" data-aos="fade-up" data-aos-delay="500">
-      <p class="txt-p">
-        Gracias por permitirnos compartir nuestra vocación de servicio. Cada paso que damos junto a ustedes es una esperanza que florece en el corazón de nuestra sociedad.
-      </p>
     </div>
   </section>
 
-  <section class="contacto" data-aos="fade-up">
-    <div class="contacto-container container">
-      <h2 id="contactos" data-aos="fade-down">Comunícate con nosotros</h2>
-      <p class="txt-p" data-aos="fade-up" data-aos-delay="100">
-        ¿Querés colaborar, unirte como voluntario o simplemente saber más sobre nuestro trabajo? Completa el formulario y nos pondremos en contacto contigo.
-      </p>
+ 
+  <section class="seccion-oscura">
+    <div class="container">
+      <div class="seccion-encabezado claro" data-aos="fade-up">
+        <h2>Comunícate con nosotros</h2>
+        <p class="txt-p claro">¿Querés colaborar, unirte como voluntario o simplemente saber más sobre nuestro trabajo? Completa el formulario.</p>
+      </div>
 
-      <form action="https://formsubmit.co/sociedadmedicosdelmanana@gmail.com" method="POST" class="formulario-contacto" data-aos="fade-up" data-aos-delay="200">
+      <form action="https://formsubmit.co/sociedadmedicosdelmanana@gmail.com" method="POST" class="formulario-contacto" data-aos="fade-up" data-aos-delay="100">
         <div class="form-group">
           <label for="nombre">Tu nombre completo</label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: María López" required>
@@ -236,142 +127,79 @@
     </div>
   </section>
 
-  <section class="equipo-junta" data-aos="fade-up" data-aos-delay="300">
-    <div class="equipo-junta-content container">
-      <h2 id="nostrajunta" data-aos="fade-down">Nuestra Junta Directiva</h2>
-
-      <div class="equipo-grupo">
-        <div class="card" data-aos="fade-up" data-aos-delay="400">
-          <img src="imagenes/Erickjunta.png" alt="Erick Deras, Presidente">
-          <h3>Erick Deras</h3>
-          <p>Presidente y fundador de la Sociedad de Médicos del Mañana.</p>
-        </div>
-
-         <div class="card" data-aos="fade-up" data-aos-delay="500">
-          <img src="imagenes/Gusjunta.png" alt="Gustavo Lovo, Vicepresidente">
-          <h3>Gustavo Lovo</h3>
-          <p>Vicepresidente de la Sociedad de Médicos del Mañana.</p>
-        </div>
-      </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="500">
-          <img src="imagenes/raqueljunta.png" alt="Raquel Vásquez, Gestora de proyectos">
-          <h3>Raquel Vásquez</h3>
-          <p>Gestora de proyectos de la Sociedad de Médicos del Mañana.</p>
-        </div>
+  
+  <section class="seccion-clara" id="dona">
+    <div class="container">
+      <div class="seccion-encabezado" data-aos="fade-up">
+        <h2>Donaciones</h2>
+        <p class="txt-p">Tu apoyo nos permite llevar atención médica gratuita, medicamentos y esperanza a comunidades que más lo necesitan.</p>
       </div>
 
-      <div class="mensaje-final container" data-aos="fade-up" data-aos-delay="800">
-        <p class="txt-p">
-          Nuestra junta directiva está al tanto de todos sus comentarios. Esperamos conocerlos pronto, héroes del mañana.
-        </p>
+      <div class="donacion-bloque" data-aos="fade-up" data-aos-delay="100">
+        <div class="donacion-imagen">
+          <img src="imagenes/donacion.jpg" alt="Apoyo comunitario">
+        </div>
+        <div class="donacion-info">
+          <h3>Cada donación cuenta</h3>
+          <p>Con tu contribución financiamos brigadas médicas, entrega de medicamentos e insumos, y programas de salud mental en comunidades vulnerables de El Salvador.</p>
+          <form action="https://www.paypal.com/donate" method="post" target="_top" style="margin-top: 20px;">
+            <input type="hidden" name="hosted_button_id" value="L78Z8EPZA4B3N">
+            <input type="image"
+              src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+              border="0" name="submit"
+              title="Donar con PayPal"
+              alt="Donar con PayPal">
+            <img alt="" border="0" src="https://www.paypal.com/en_SV/i/scr/pixel.gif" width="1" height="1">
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="blog-seccion" data-aos="fade-up">
-    <div class="blog-seccion-content container">
-      <h2 id="news">Actividades y Noticias</h2>
-      <p class="txt-p">
-        Aquí encontrarás nuestras actividades y noticias.
-      </p>
-
-      <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
-        <div class="card blog-1">
-          <img src="imagenes/EquipoSMDM.png" alt="Brigada médica en Tutunichapa">
-          <h3>Brigada médica y psicosocial en comunidad Tutunichapa I, en conjunto con ACNUR</h3>
-          <p>
-Se brindó atención médica general en la comunidad Tutunichapa I, San Salvador, en el marco de un proyecto piloto enfocado en el fortalecimiento del bienestar integral de la población. La jornada incluyó consulta psicosocial y actividades de educación en salud, ejecutadas por nuestro equipo en articulación con ACNUR, consolidando un abordaje multidisciplinario orientado a las necesidades de la comunidad.          </p>
-    </div>
-   <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
-        <div class="card blog-1">
-          <img src="imagenes/aliabuemdma.png" alt="Visita médica navideña al "Hogar de Ancianas Nuestra Señora Reina de la Paz">
-          <h3>Visita médica navideña al Hogar de Ancianas Nuestra Señora Reina de la Paz</h3>
-          <p>
-Se realizó una visita al Hogar de Ancianas Nuestra Señora Reina de la Paz en vísperas de la Navidad, en el marco de una jornada orientada al cuidado integral y al acompañamiento humano de sus residentes. Durante la actividad, se brindaron consultas médicas generales y se entregaron donaciones en especie, contribuyendo así a cubrir necesidades prioritarias del hogar y a mejorar la calidad de vida de las adultas mayores.          </p>
-    </div>    
-        
-    </div>
-          <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
-        <div class="card blog-1">
-          <img src="imagenes/niñosmdm2025.png" alt="Visita al Hogar del Niño San Vicente de Paul">
-          <h3> Visita psicológica y recreativa al Hogar del Niño San Vicente de Paul, en conjunto con Cruz Roja Juventud</h3>
-          <p>
-            Se realizó una visita al Hogar del Niño San Vicente de Paúl con el objetivo de brindar acompañamiento psicológico a los niños residentes. A través de charlas y actividades lúdicas, se promovió el fortalecimiento de la salud mental y el bienestar emocional de los menores. Asimismo, en coordinación con Cruz Roja Juventud, se llevó a cabo la entrega de juguetes como parte del compromiso institucional con la niñez y su desarrollo integral.
-          </p>
-        </div>
-      <div class="blog-content" data-aos="fade-up" data-aos-delay="100">
-        <div class="card blog-1">
-          <img src="imagenes/fristtime.png" alt="al Hogar de Ancianas Nuestra Señora Reina de la Paz">
-          <h3> Visita médica al Hogar de Ancianas Nuestra Señora Reina de la Paz.</h3>
-          <p>
-            Se llevó a cabo nuestra primera actividad, en la cual visitamos al Hogar de Ancianas Nuestra Señora Reina de la Paz, desarrollando una jornada centrada en el cuidado integral y el acompañamiento cercano de sus residentes. Durante la actividad, se ofrecieron consultas médicas generales y se realizó la entrega de donaciones en especie, contribuyendo a la atención de sus necesidades y al fortalecimiento de su bienestar.
-          </p>
-        
-    </div>
-    
-  </section>
-<section class="donaciones" id="dona">
-  <div class="donaciones-content container" data-aos="fade-up">
-    <h2>Donaciones</h2>
-    <p class="txt-p">
-      Tu apoyo nos permite llevar atención médica gratuita, medicamentos y esperanza a comunidades que más lo necesitan.
-    </p>
-
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
-      <input type="hidden" name="hosted_button_id" value="L78Z8EPZA4B3N" />
-      
-      <input type="image" 
-        src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" 
-        border="0" 
-        name="submit" 
-        title="Donar con PayPal" 
-        alt="Donar con PayPal" />
-
-      <img alt="" border="0" 
-        src="https://www.paypal.com/en_SV/i/scr/pixel.gif" 
-        width="1" height="1" />
-    </form>
-
-  </div>
-  <div class="imagenes-grupo">
-  <div class="imagen-item">
-    <img src="imagenes/carrusel5.png" alt="Apoyo comunitario">
-  </div>
-</div>
-</section>
-
-  <footer class="footer" data-aos="fade-up" data-aos-delay="200">
+ 
+  <footer class="footer">
     <div class="footer-content container">
-      <div class="link">
-        <h3>Atajos</h3>
+      <div class="footer-col">
+        <h3 class="logo" style="margin-bottom: 12px;">SMDM</h3>
+        <p style="color:#c5c5c5; font-size:14px; line-height:1.7;">"Pasión por curar,<br>compromiso para enseñar."</p>
+      </div>
+      <div class="footer-col">
+        <h3>Páginas</h3>
         <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
-          <li><a href="#mision">Misión y visión</a></li>
-          <li><a href="#nuestroequipo">Nuestro equipo</a></li>
-          <li><a href="#que-hacemos">¿Qué hacemos?</a></li>
-          <li><a href="#programa">Programas activos</a></li>
-          <li><a href="#contactos">Contacto</a></li>
-          <li><a href="#nostrajunta">Junta directiva</a></li>
-          <li><a href="#news">Actividades y Noticias</a></li>
-          <li><a href="#dona">Dona</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="equipo.html">Equipo</a></li>
+          <li><a href="que-hacemos.html">¿Qué hacemos?</a></li>
         </ul>
       </div>
+      <div class="footer-col">
+        <h3>Síguenos</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/sociedad_mdm/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="mailto:sociedadmedicosdelmanana@gmail.com">sociedadmedicosdelmanana@gmail.com</a></li>
+          <li><a href="#dona">Hacer una donación</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 Sociedad de Médicos del Mañana — El Salvador</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
-
+    AOS.init({ duration: 900, once: true });
     const toggle = document.getElementById('menu-toggle');
     const navbar = document.getElementById('navbar');
-
     toggle.addEventListener('click', () => {
       const isOpen = navbar.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen);
     });
   </script>
-
 </body>
 </html>
