@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividades — SMDM</title>
+  <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+
+  <style>
+    .filtros-wrapper {
+      background: #ffffff;
+      border-bottom: 1px solid #e8e8e8;
+      position: sticky;
+      top: 130px;
+      z-index: 50;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    .filtros-wrapper.oculto {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .filtros-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 80px;
+      flex-wrap: wrap;
+    }
+
+    .filtros-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+
+    .filtros-grupo {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filtros-divider {
+      width: 1px;
+      height: 28px;
+      background: #e0e0e0;
+      margin: 0 4px;
+    }
+
+    .btn-filtro {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 30px;
+      border: 1.5px solid #ddd;
+      background: transparent;
+      color: #555;
+      font-family: "Poppins", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-filtro:hover {
+      border-color: var(--azul);
+      color: var(--azul-dark);
+      background: rgba(96,192,218,0.07);
+    }
+
+    .btn-filtro.activo {
+      background-color: var(--azul);
+      border-color: var(--azul);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .btn-filtro .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .btn-limpiar {
+      margin-left: auto;
+      padding: 7px 16px;
+      background: none;
+      border: none;
+      color: #aaa;
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-limpiar:hover { color: var(--azul-dark); }
+
+    .resultados-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .resultados-meta span {
+      font-size: 13px;
+      color: #999;
+      font-weight: 500;
+    }
+
+    .resultados-meta strong {
+      color: var(--azul-dark);
+    }
+
+    .actividades-section {
+      background: #f7f8fa;
+      min-height: 60vh;
+      padding: 75px 0 90px;
+    }
+
+    .actividades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .act-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      cursor: default;
+    }
+
+    .act-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+    }
+
+    .act-card.oculto {
+      display: none;
+    }
+
+    .act-card-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .act-card-img img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .act-card:hover .act-card-img img {
+      transform: scale(1.04);
+    }
+
+    .act-card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge-programa {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(6px);
+    }
+
+    .badge-año {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10.5px;
+      font-weight: 700;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      backdrop-filter: blur(6px);
+    }
+
+    .prog-risas          { background: rgba(232, 108, 243, 0.92); color: #fff; }
+    .prog-abrazo         { background: rgba(204, 60, 60, 0.92);   color: #fff; }
+    .prog-abiertas       { background: rgba(48, 56, 142, 0.92);   color: #fff; }
+    .prog-capacitaciones { background: rgba(180, 170, 0, 0.92);   color: #fff; }
+
+    .act-card-body {
+      padding: 22px 24px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .act-card-fecha {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .act-card-titulo {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--texto);
+      line-height: 1.45;
+    }
+
+    .act-card-desc {
+      font-size: 13.5px;
+      color: var(--texto-sub);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .act-card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .act-tag {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(96,192,218,0.12);
+      color: var(--azul-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .sin-resultados {
+      text-align: center;
+      padding: 80px 20px;
+      display: none;
+      grid-column: 1 / -1;
+    }
+
+    .sin-resultados.visible {
+      display: block;
+    }
+
+    .sin-resultados .emoji {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .sin-resultados h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 8px;
+    }
+
+    .sin-resultados p {
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 991px) {
+      .filtros-inner {
+        height: auto;
+        padding: 14px 20px;
+        gap: 8px;
+      }
+      .filtros-divider { display: none; }
+      .btn-limpiar { margin-left: 0; }
+      .actividades-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">SMDM</a>
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="navbar" aria-label="Abrir menú">
+        <img src="imagenes/menu.png" class="menu-icono" alt="Menú">
+      </button>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="equipo.html">Equipo</a></li>
+          <li><a href="que-hacemos.html">¿Qué hacemos?</a></li>
+          <li><a href="actividades.html" class="active">Actividades</a></li>
+          <li><a href="donaciones.html">Donaciones</a></li>
+          <li><a href="https://www.instagram.com/sociedad_mdm/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div class="container" data-aos="fade-up">
+      <h1>Actividades</h1>
+      <p>Cada visita, cada brigada, cada sonrisa que transformamos en esperanza.</p>
+    </div>
+  </section>
+
+  <div class="filtros-wrapper">
+    <div class="filtros-inner">
+      <span class="filtros-label">Año</span>
+      <div class="filtros-grupo" id="filtros-año">
+        <button class="btn-filtro activo" data-tipo="año" data-val="todos">Todos</button>
+        <button class="btn-filtro" data-tipo="año" data-val="2024">2024</button>
+        <button class="btn-filtro" data-tipo="año" data-val="2025">2025</button>
+        <button class="btn-filtro" data-tipo="año" data-val="2026">2026</button>
+      </div>
+
+      <div class="filtros-divider"></div>
+
+      <span class="filtros-label">Programa</span>
+      <div class="filtros-grupo" id="filtros-programa">
+        <button class="btn-filtro activo" data-tipo="programa" data-val="todos">Todos</button>
+        <button class="btn-filtro" data-tipo="programa" data-val="risas">
+          <span class="dot" style="color:#e86cf3;"></span> Risas que Sanan
+        </button>
+        <button class="btn-filtro" data-tipo="programa" data-val="abrazo">
+          <span class="dot" style="color:#cc3c3c;"></span> Abrazo Intergeneracional
+        </button>
+        <button class="btn-filtro" data-tipo="programa" data-val="abiertas">
+          <span class="dot" style="color:#30388e;"></span> Actividades Abiertas
+        </button>
+        <button class="btn-filtro" data-tipo="programa" data-val="capacitaciones">
+          <span class="dot" style="color:#b4aa00;"></span> Capacitaciones
+        </button>
+      </div>
+
+      <button class="btn-limpiar" id="btn-limpiar">✕ Limpiar filtros</button>
+    </div>
+  </div>
+
+  <section class="actividades-section">
+    <div class="container">
+      <div class="resultados-meta">
+        <span>Mostrando <strong id="contador">0</strong> actividades</span>
+      </div>
+
+      <div class="actividades-grid" id="actividades-grid">
+
+
+
+        <div class="act-card" data-año="2024" data-programa="abrazo">
+          <div class="act-card-img">
+            <img src="imagenes/firsttimesincensu.jpeg" alt="Primera actividad SMDM">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abrazo">Abrazo Intergeneracional</span>
+              <span class="badge-año">2024</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2024</span>
+            <h3 class="act-card-titulo">Primera actividad: Visita médica al Hogar de Ancianas Nuestra Señora Reina de la Paz</h3>
+            <p class="act-card-desc">Se llevó a cabo nuestra primera actividad institucional, en la cual visitamos el Hogar de Ancianas Nuestra Señora Reina de la Paz, desarrollando una jornada centrada en el cuidado integral de sus residentes. Con un equipo inicial de seis personas, logramos articular nuestra primera visita, marcando el inicio real de nuestras actividades.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Primera actividad</span>
+              <span class="act-tag">Atención médica</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2024" data-programa="abrazo capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/TallerIEPROES.jpg" alt="Taller IEPROES">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abrazo">Abrazo Intergeneracional</span>
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2024</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">Septiembre, 2024</span>
+            <h3 class="act-card-titulo">Taller de Capacitación sobre "Toma de Signos Vitales" a estudiantes de IEPROES y entrega de Insumos al Hogar Nuestra Señora Reina de la Paz</h3>
+            <p class="act-card-desc">Se realizó una visita al Hogar de Ancianas Nuestra Señora Reina de la Paz. En esta ocasión, se les brindó a los estudiantes de IEPROES una capacitación sobre la toma de signos vitales, aprendiendo junto con las residentes del hogar la forma correcta de hacerlo, adicionalmente se hizo la entrega de insumos al Hogar por su apertura y muestra de apoyo.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Toma de signos vitales</span>
+              <span class="act-tag">Entrega de insumos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2024" data-programa="abiertas">
+          <div class="act-card-img">
+            <img src="imagenes/BrigadaLeon50SS.jpg" alt="Brigada Santa Tecla">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abiertas">Actividades Abiertas</span>
+              <span class="badge-año">2024</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2024</span>
+            <h3 class="act-card-titulo">Brigada multidisciplinaria en Santa Tecla — con Club de Leones 50 Nueva San Salvador</h3>
+            <p class="act-card-desc">Participamos en la brigada multidisciplinaria organizada por el Club de Leones 50 Nueva San Salvador en Santa Tecla, desarrollando jornadas de tamizaje y atención comunitaria para los asistentes. Gracias al apoyo del Club de Leones, también se realizó la entrega de lentes a personas de la comunidad, contribuyendo a mejorar su bienestar y calidad de vida.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Brigada médica</span>
+              <span class="act-tag">Club de Leones</span>
+              <span class="act-tag">Psicosocial</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2024" data-programa="abrazo">
+          <div class="act-card-img">
+            <img src="imagenes/HogarSanVicenteAnci.jpg" alt="Hogar San Vicente de Paul">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abrazo">Abrazo Intergeneracional</span>
+              <span class="badge-año">2024</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">Octubre, 2024</span>
+            <h3 class="act-card-titulo">Visita médica al Hogar de Ancianas San Vicente de Paul — con Estudiantes de la Policía Nacional Civil</h3>
+            <p class="act-card-desc">Visitamos el Hogar de Ancianas San Vicente de Paúl, gracias a la invitación de los estudiantes de la Policía Nacional Civil. A través de un abordaje médico integral y un acompañamiento cercano, se logró evaluar el estado de salud actual de las pacientes, identificando sus principales necesidades y brindando atención con enfoque humano y solidario.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Atención médica</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2024" data-programa="abrazo">
+          <div class="act-card-img">
+            <img src="imagenes/ErickNavideño.jpg" alt="Visita navideña">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abrazo">Abrazo Intergeneracional</span>
+              <span class="badge-año">2024</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">Diciembre, 2024</span>
+            <h3 class="act-card-titulo">Visita médica navideña al Hogar de Ancianas Nuestra Señora Reina de la Paz</h3>
+            <p class="act-card-desc">En vísperas de la Navidad, visitamos el Hogar de Ancianas San Vicente de Paúl como parte de nuestro compromiso con el bienestar y acompañamiento de este importante sector de la sociedad. Durante la jornada, se realizó la entrega de insumos y regalos para todas las residentes, compartiendo un espacio de cercanía, solidaridad y atención humana. Además, se llevó a cabo un tamizaje de salud como parte del seguimiento de los distintos cuadros médicos presentes en las pacientes.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Atención médica</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="act-card" data-año="2025" data-programa="risas">
+          <div class="act-card-img">
+            <img src="imagenes/charlassanvicentedepaul.jpeg" alt="Charlas Hogar del Niño">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-risas">Risas que Sanan</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Charlas y abordaje psicológico en el Hogar del Niño San Vicente de Paul</h3>
+            <p class="act-card-desc">A través de charlas sobre reconocimiento emocional, acercamos a los niños del Hogar del Niño San Vicente de Paúl a la importancia de la salud mental y el manejo de sus emociones. Una intervención que dejó huella en cada participante.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Reconocimiento emocional</span>
+              <span class="act-tag">Psicología</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2025" data-programa="risas">
+          <div class="act-card-img">
+            <img src="imagenes/PanDulce.jpg" alt="Centro Escolar para Ciegos">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-risas">Risas que Sanan</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Muestra de Cariño al Centro Escolar para Ciegos V. De Dueñas</h3>
+            <p class="act-card-desc">Se realizó una visita al Centro Escolar para Ciegos, donde miembros de la Sociedad de Médicos del Mañana compartieron una jornada de convivencia y cercanía con los estudiantes del centro. Como muestra de apoyo y cariño, se hizo entrega de pan dulce para los niños y jóvenes, promoviendo un espacio de solidaridad y acompañamiento humano.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Reconocimiento emocional</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2025" data-programa="abiertas">
+          <div class="act-card-img">
+            <img src="imagenes/EquipoMDM.jpg" alt="Brigada Tutunichapa">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abiertas">Actividades Abiertas</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Brigada médica y psicosocial en comunidad Tutunichapa I — con ACNUR</h3>
+            <p class="act-card-desc">Se brindó atención médica general a la comunidad Tutunichapa I, en San Salvador, mediante un equipo multidisciplinario conformado por médicos y personal de enfermería, con el objetivo de acercar servicios de salud a una de las comunidades más vulnerables del país. Como parte de la jornada, también se habilitó un espacio de atención psicológica, promoviendo un enfoque integral orientado al bienestar físico y mental de la población. La actividad se desarrolló como un proyecto piloto en alianza estratégica con ACNUR, fortaleciendo el trabajo comunitario y la atención humanitaria en el territorio.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Brigada médica</span>
+              <span class="act-tag">ACNUR</span>
+              <span class="act-tag">Psicosocial</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2025" data-programa="abiertas">
+          <div class="act-card-img">
+            <img src="imagenes/LluviasTUTU.jpg" alt="Entrega de insumos lluvias">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abiertas">Actividades Abiertas</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Visita a la comunidad Tutunichapa I para entrega de insumos.</h3>
+            <p class="act-card-desc">A raíz de las lluvias ocurridas durante el periodo de agosto de 2025, se realizó una visita de emergencia a la comunidad Tutunichapa I, en San Salvador, con el objetivo de brindar apoyo inmediato a las familias afectadas. Gracias a la coordinación de ACNUR, se llevó a cabo la entrega de insumos para los habitantes de la comunidad.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Entrega de insumos</span>
+              <span class="act-tag">ACNUR</span>
+              <span class="act-tag">Emergencia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2025" data-programa="capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/Capacitación 1 CRJ.jpg" alt="Capacitación Cruz Roja Juventud">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Primera Capacitación para los voluntarios de Cruz Roja Juventud</h3>
+            <p class="act-card-desc">Se brindó una capacitación sobre "Higiene de Manos en la Atención Prehospitalaria" dirigida a voluntarios de Cruz Roja Juventud, con el objetivo de fortalecer las buenas prácticas en el abordaje de emergencias. Durante la jornada, los participantes aprendieron la técnica correcta del lavado de manos, así como la importancia de esta medida en la prevención de infecciones y en la protección tanto del paciente como del personal de atención prehospitalaria.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-card" data-año="2025" data-programa="capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/Capacitacion2CRJ.jpg" alt="Capacitación Cruz Roja Juventud">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Taller de Toma de Signos Vitales para los voluntarios de Cruz Roja Juventud</h3>
+            <p class="act-card-desc">Se desarrolló un taller de “Toma de Signos Vitales” dirigido a voluntarios de Cruz Roja Juventud, orientado al fortalecimiento de conocimientos básicos en la evaluación inicial de pacientes durante situaciones de emergencia. Durante la actividad, los participantes aprendieron a realizar correctamente la medición de presión arterial, frecuencia cardíaca, frecuencia respiratoria y temperatura, además de comprender la importancia de estos parámetros en la valoración clínica y el abordaje prehospitalario.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>
+        <div class="act-card" data-año="2025" data-programa="capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/PresionCRJ.jpg" alt="Capacitación Cruz Roja Juventud">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Taller de Toma de Presión Arterial para los voluntarios de Cruz Roja Juventud</h3>
+            <p class="act-card-desc">Se desarrolló un taller de “Toma de Presión Arterial” dirigido a voluntarios de Cruz Roja Juventud, enfocado en fortalecer habilidades básicas para la evaluación inicial de pacientes en contextos de atención prehospitalaria. Durante la jornada, los participantes aprendieron la técnica correcta para la medición de la presión arterial, el uso adecuado del equipo y la importancia de este signo vital en la identificación temprana de posibles alteraciones en el estado de salud de los pacientes.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>
+        <div class="act-card" data-año="2025" data-programa="risas">
+          <div class="act-card-img">
+            <img src="imagenes/niñosmdm.jpeg" alt="Centro Escolar para Ciegos">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-risas">Risas que Sanan</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2025</span>
+            <h3 class="act-card-titulo">Visita psicológica y recreativa al Hogar del Niño San Vicente de Paul</h3>
+            <p class="act-card-desc">A través de charlas educativas y actividades lúdicas, se promovió el fortalecimiento de la salud mental y el bienestar emocional de los niños, generando espacios de aprendizaje, convivencia y expresión. Como parte de la jornada, y en coordinación con Cruz Roja Juventud, también se realizó la entrega de juguetes, compartiendo momentos de alegría y cercanía con los participantes.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Reconocimiento emocional</span>
+                <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>
+        <div class="act-card" data-año="2025" data-programa="abrazo">
+          <div class="act-card-img">
+            <img src="imagenes/aliabumdmsincensu.jpeg" alt="Visita navideña">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abrazo">Abrazo Intergeneracional</span>
+              <span class="badge-año">2025</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">Diciembre, 2024</span>
+            <h3 class="act-card-titulo">Visita médica navideña al Hogar de Ancianas Nuestra Señora Reina de la Paz</h3>
+            <p class="act-card-desc">Por segundo año consecutivo, realizamos una visita al Hogar de Ancianas San Vicente de Paúl en vísperas de la Navidad, reafirmando nuestro compromiso con el acompañamiento y bienestar de las residentes. Durante la jornada, se entregaron insumos para las residentes, compartiendo un espacio de convivencia, solidaridad y atención cercana.
+
+Además, se desarrolló un tamizaje de salud como parte del seguimiento de los distintos cuadros médicos presentes en las residentes, fortaleciendo la vigilancia y el cuidado integral de su estado de salud.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Atención médica</span>
+            </div>
+          </div>
+        </div>
+        <div class="act-card" data-año="2026" data-programa="capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/VitalCRJ.jpg" alt="Capacitación Cruz Roja Juventud">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2026</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2026</span>
+            <h3 class="act-card-titulo">Taller de Toma de Signos Vitales para los voluntarios de Cruz Roja Juventud</h3>
+            <p class="act-card-desc">Se desarrolló un taller de “Toma de Signos Vitales ” dirigido a voluntarios de Cruz Roja Juventud, con el objetivo de fortalecer conocimientos básicos para la atención inicial de pacientes en contextos prehospitalarios. Durante la jornada, los participantes aprendieron la correcta medición de signos vitales, incluyendo presión arterial, frecuencia cardíaca y frecuencia respiratoria.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>
+                <div class="act-card" data-año="2026" data-programa="capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/DeshiCRJ.jpeg" alt="Capacitación Cruz Roja Juventud">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2026</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2026</span>
+            <h3 class="act-card-titulo">Taller de Deshidratación y Manejo de Enfermedades Transmisibles para los voluntarios de Cruz Roja Juventud</h3>
+            <p class="act-card-desc">Se desarrolló un taller sobre “Deshidratación y Manejo de Enfermedades Transmisibles” dirigido a voluntarios de Cruz Roja Juventud, con el objetivo de fortalecer conocimientos básicos para la atención y prevención de enfermedades en contextos comunitarios y prehospitalarios. Durante la jornada, los participantes aprendieron a identificar signos y síntomas de deshidratación, así como medidas iniciales de manejo y prevención.
+
+Además, se abordaron aspectos fundamentales sobre enfermedades transmisibles, incluyendo mecanismos de contagio, medidas de bioseguridad y acciones preventivas orientadas a reducir riesgos y promover una atención más segura y efectiva en situaciones de emergencia y trabajo comunitario.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>          
+        <div class="act-card" data-año="2026" data-programa="abrazo">
+          <div class="act-card-img">
+            <img src="imagenes/CasaSantaMartaSMDM.jpeg" alt="Casa Santa Marta">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-abrazo">Abrazo Intergeneracional</span>
+              <span class="badge-año">2026</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2026</span>
+            <h3 class="act-card-titulo">Visita médica a Casa Santa Marta en Tonacatepeque</h3>
+            <p class="act-card-desc">Visitamos la Casa Santa Marta, en Tonacatepeque, una residencia de adultos mayores que nos recibió con gran calidez y cariño. Durante la jornada, se brindaron consultas médicas gratuitas a los residentes, permitiendo evaluar su estado de salud y dar seguimiento a distintas necesidades médicas presentes en la institución.
+
+Además, se realizó la entrega de diversos insumos como parte de nuestro compromiso con el apoyo integral y el acompañamiento a hogares que trabajan diariamente por el bienestar y cuidado de los adultos mayores.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Consultas gratuitas</span>
+              <span class="act-tag">Entrega de insumos</span>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="sin-resultados" id="sin-resultados">
+          <span class="emoji">🔍</span>
+          <h3>No hay actividades con esos filtros</h3>
+          <p>Intenta con otra combinación de año o programa.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-acento">
+    <div class="container" data-aos="fade-up">
+      <h2>¿Quieres ser parte de nuestra historia?</h2>
+      <p class="txt-p claro" style="margin-bottom:30px;">Tu apoyo hace posible que sigamos creando actividades como estas. Únete o dona.</p>
+      <a href="donaciones.html" class="btn-primary" style="background-color:#ffffff; color:var(--azul-dark); margin-right:12px;">Hacer una donación</a>
+      <a href="index.html#contacto" class="btn-primary" style="background-color:transparent; border:2px solid #fff; color:#fff;">Contáctanos</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content container">
+      <div class="footer-col">
+        <h3 class="logo" style="margin-bottom:12px;">SMDM</h3>
+        <p style="color:#c5c5c5; font-size:14px; line-height:1.7;">"Pasión por curar,<br>compromiso para enseñar."</p>
+      </div>
+      <div class="footer-col">
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="equipo.html">Equipo</a></li>
+          <li><a href="que-hacemos.html">¿Qué hacemos?</a></li>
+          <li><a href="actividades.html">Actividades</a></li>
+          <li><a href="donaciones.html">Donaciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Síguenos</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/sociedad_mdm/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="mailto:contacto@sociedadmdm.org">contacto@sociedadmdm.org</a></li>
+          <li><a href="donaciones.html">Hacer una donación</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 Sociedad de Médicos del Mañana — El Salvador</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+   
+    const toggle = document.getElementById('menu-toggle');
+    const navbar = document.getElementById('navbar');
+    toggle.addEventListener('click', () => {
+      const isOpen = navbar.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+   
+    const filtrosWrapper = document.querySelector('.filtros-wrapper');
+    let lastScroll = 0;
+    const UMBRAL = 80;
+
+    window.addEventListener('scroll', () => {
+      const current = window.scrollY;
+      if (current > UMBRAL && current > lastScroll) {
+        filtrosWrapper.classList.add('oculto');
+      } else {
+        filtrosWrapper.classList.remove('oculto');
+      }
+      lastScroll = current;
+    }, { passive: true });
+
+   
+    let filtroAño      = 'todos';
+    let filtroPrograma = 'todos';
+
+    const cards         = document.querySelectorAll('.act-card[data-año]');
+    const contador      = document.getElementById('contador');
+    const sinResultados = document.getElementById('sin-resultados');
+
+    function aplicarFiltros() {
+      let visibles = 0;
+      cards.forEach(card => {
+        const año  = card.dataset.año;
+        const prog = card.dataset.programa;
+
+        const matchAño  = filtroAño === 'todos' || año === filtroAño;
+        const matchProg = filtroPrograma === 'todos' || prog.split(' ').includes(filtroPrograma);
+
+        if (matchAño && matchProg) {
+          card.classList.remove('oculto');
+          visibles++;
+        } else {
+          card.classList.add('oculto');
+        }
+      });
+      contador.textContent = visibles;
+      sinResultados.classList.toggle('visible', visibles === 0);
+    }
+
+    document.querySelectorAll('[data-tipo="año"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-tipo="año"]').forEach(b => b.classList.remove('activo'));
+        btn.classList.add('activo');
+        filtroAño = btn.dataset.val;
+        aplicarFiltros();
+      });
+    });
+
+    document.querySelectorAll('[data-tipo="programa"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-tipo="programa"]').forEach(b => b.classList.remove('activo'));
+        btn.classList.add('activo');
+        filtroPrograma = btn.dataset.val;
+        aplicarFiltros();
+      });
+    });
+
+    document.getElementById('btn-limpiar').addEventListener('click', () => {
+      filtroAño = 'todos';
+      filtroPrograma = 'todos';
+      document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
+      document.querySelector('[data-tipo="año"][data-val="todos"]').classList.add('activo');
+      document.querySelector('[data-tipo="programa"][data-val="todos"]').classList.add('activo');
+      aplicarFiltros();
+    });
+
+    aplicarFiltros();
+  </script>
+</body>
+</html>
