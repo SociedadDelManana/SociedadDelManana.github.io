@@ -50,15 +50,16 @@
     </div>
   </section>
 
-  
+  <!-- SECCIÓN DE IMPACTO -->
   <section class="seccion-impacto">
     <div class="container">
       <div class="impacto-encabezado" data-aos="fade-up">
-        <p class="impacto-subtitulo">Nuestro impacto</p>
+        <p class="impacto-subtitulo">Nuestro impacto en números</p>
         <h2>Lo que hemos logrado juntos</h2>
       </div>
       <div class="impacto-cifras" data-aos="fade-up" data-aos-delay="100">
 
+        <!-- 1: +300 Salvadoreños -->
         <div class="cifra-item">
           <div class="cifra-icono">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -66,18 +67,22 @@
               <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
             </svg>
           </div>
-          <div class="cifra-numero">+300</div>
-          <div class="cifra-descripcion">Salvadoreños beneficiados mediante actividades médicas, educativas y de apoyo humanitario.</div>
+          <div class="cifra-numero" data-target="300" data-prefix="+">0</div>
+          <div class="cifra-descripcion">salvadoreños beneficiados mediante actividades médicas, educativas y de apoyo humanitario</div>
         </div>
-       <div class="cifra-item">
+
+        <!-- 2: +100 Consultas -->
+        <div class="cifra-item">
           <div class="cifra-icono">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
             </svg>
           </div>
-          <div class="cifra-numero">+100</div>
-          <div class="cifra-descripcion">Consultas médicas brindadas en jornadas comunitarias y actividades asistenciales</div>
+          <div class="cifra-numero" data-target="100" data-prefix="+">0</div>
+          <div class="cifra-descripcion">consultas médicas brindadas en jornadas comunitarias y actividades asistenciales</div>
         </div>
+
+        <!-- 3: 70 Expedientes -->
         <div class="cifra-item">
           <div class="cifra-icono">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -88,10 +93,11 @@
               <polyline points="10 9 9 9 8 9"/>
             </svg>
           </div>
-          <div class="cifra-numero">70</div>
-          <div class="cifra-descripcion">Expedientes clínicos registrados y resguardados por nosotros</div>
+          <div class="cifra-numero" data-target="70">0</div>
+          <div class="cifra-descripcion">expedientes clínicos registrados y resguardados por nosotros</div>
         </div>
 
+        <!-- 4: 11 Jornadas -->
         <div class="cifra-item">
           <div class="cifra-icono">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -99,14 +105,14 @@
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
-          <div class="cifra-numero">11</div>
-          <div class="cifra-descripcion">Jornadas de intervención comunitaria realizadas en comunidades y centros vulnerables</div>
+          <div class="cifra-numero" data-target="11">0</div>
+          <div class="cifra-descripcion">jornadas de intervención comunitaria realizadas en comunidades y centros vulnerables</div>
         </div>
 
       </div>
     </div>
   </section>
-  
+  <!-- FIN SECCIÓN DE IMPACTO -->
 
   <section class="seccion-clara">
     <div class="container">
@@ -270,6 +276,37 @@
       const isOpen = navbar.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen);
     });
+
+    // Contador animado — arranca cuando la sección entra en pantalla
+    function animarContador(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const prefix = el.dataset.prefix || '';
+      const duration = 1800; // ms
+      const start = performance.now();
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.round(easeOut(progress) * target);
+        el.textContent = prefix + value;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.cifra-numero[data-target]').forEach(animarContador);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const seccionImpacto = document.querySelector('.seccion-impacto');
+    if (seccionImpacto) observer.observe(seccionImpacto);
   </script>
 </body>
 </html>
