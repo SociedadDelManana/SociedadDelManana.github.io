@@ -720,6 +720,146 @@ img { display: block; }
 
 
 /* ============================================================
+   SECCIÓN DE IMPACTO / CIFRAS
+   ============================================================ */
+
+.seccion-impacto {
+  background-color: var(--oscuro);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.seccion-impacto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(96, 192, 218, 0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(96, 192, 218, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.impacto-encabezado {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.impacto-subtitulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 10px;
+}
+
+.impacto-encabezado h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.impacto-cifras {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.cifra-item {
+  background-color: rgba(30, 32, 36, 0.9);
+  padding: 40px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.cifra-item:hover {
+  background-color: rgba(96, 192, 218, 0.07);
+}
+
+.cifra-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: rgba(255,255,255,0.07);
+}
+
+.cifra-icono {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(96, 192, 218, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  border: 1px solid rgba(96, 192, 218, 0.2);
+}
+
+.cifra-icono svg {
+  width: 24px;
+  height: 24px;
+  color: var(--azul);
+}
+
+.cifra-numero {
+  font-size: 48px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #ffffff 60%, var(--azul));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cifra-descripcion {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.55;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  .impacto-cifras {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cifra-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .impacto-encabezado h2 {
+    font-size: 28px;
+  }
+
+  .cifra-numero {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 540px) {
+  .impacto-cifras {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
    PÁGINA DE DONACIONES
    ============================================================ */
 
