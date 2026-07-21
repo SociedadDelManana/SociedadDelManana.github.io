@@ -103,7 +103,7 @@ img { display: block; }
 
 .hero {
   background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                    url(imagenes/BACKGROUND4WEB.png);
+                    url(imagenes/MDMBACKGROUND.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -131,7 +131,7 @@ img { display: block; }
 
 .page-banner {
   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                    url(imagenes/BACKGROUND4WEB.png);
+                    url(imagenes/MDMBACKGROUND.png);
   background-position: center;
   background-size: cover;
   padding: 130px 30px 70px;
@@ -719,9 +719,6 @@ img { display: block; }
 }
 
 
-/* ============================================================
-   SECCIÓN DE IMPACTO / CIFRAS
-   ============================================================ */
 
 .seccion-impacto {
   background-color: var(--oscuro);
@@ -859,9 +856,6 @@ img { display: block; }
   }
 }
 
-/* ============================================================
-   PÁGINA DE DONACIONES
-   ============================================================ */
 
 .impacto-card {
   display: flex;

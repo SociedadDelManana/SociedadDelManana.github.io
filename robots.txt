@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sociedadmdm.org/sitemap.xml
+Sitemap: https://mdmsv.org/sitemap.xml
