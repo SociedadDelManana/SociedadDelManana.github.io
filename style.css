@@ -88,6 +88,16 @@ img { display: block; }
   color: var(--azul);
 }
 
+.navbar ul li a.nav-dona {
+  color: #E63946;
+}
+
+.navbar ul li a.nav-dona:hover,
+.navbar ul li a.nav-dona.active {
+  color: #E63946;
+  background-color: rgba(230, 57, 70, 0.15);
+}
+
 .menu-toggle {
   display: none;
   background: none;
