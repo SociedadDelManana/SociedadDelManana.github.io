@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sistema de Gestión· Médicos del Mañana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+
+  <div class="bg" id="bg" style="background-image:url('assets/fondo.jpg')"></div>
+  <div class="bg-overlay"></div>
+
+  <main class="stage">
+
+    <div class="brand">
+      
+      <div class="logo-slot" id="logoSlot">
+        <img src="assets/LOGOMDM.png" alt="Médicos del Mañana" id="logoImg">
+        <span class="logo-fallback" id="logoFallback">MDM</span>
+      </div>
+      <p class="brand-sub">Sistema de Gestión</p>
+    </div>
+
+    <svg class="pulse-divider" viewBox="0 0 320 28" preserveAspectRatio="none" aria-hidden="true">
+      <path id="pulsePath" d="M0 14 L110 14 L124 3 L138 25 L152 14 L320 14"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <section class="card" aria-labelledby="cardTitle">
+      <div class="card-tab">ACCESO</div>
+
+      <h1 id="cardTitle" class="card-title">Iniciar sesión</h1>
+      <p class="card-hint">Acceso exclusivo para el equipo clínico y de coordinación de MDM.</p>
+
+      <form id="loginForm" novalidate autocomplete="off">
+        <div class="field">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" autocomplete="username" required
+                 placeholder="ej. Dr.Cayetano Quinteros" spellcheck="false" autocapitalize="none">
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" autocomplete="current-password" required
+                   placeholder="••••••••••••">
+            <button type="button" class="toggle-visibility" id="toggleVisibility" aria-label="Mostrar contraseña" aria-pressed="false">
+              <svg class="icon-eye" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M12 5c-5.05 0-9.27 3.11-11 7.5 1.73 4.39 5.95 7.5 11 7.5s9.27-3.11 11-7.5C21.27 8.11 17.05 5 12 5zm0 12.5A5 5 0 1 1 12 7.5a5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="status" id="statusMsg" role="alert" aria-live="polite"></div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="submit-label">Ingresar</span>
+          <span class="submit-spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+    </section>
+
+    <p class="footnote">Médicos del Mañana &middot; Sistema interno de expedientes &middot; Acceso registrado</p>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

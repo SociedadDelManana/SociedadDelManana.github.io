@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Expedientes · Médicos del Mañana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+
+  <div id="gate" class="gate">
+    <div class="gate-spinner" aria-hidden="true"></div>
+    <p>Verificando sesión…</p>
+  </div>
+
+  <div id="app" class="app hidden">
+
+    <header class="topbar">
+      <div class="topbar-brand">
+        <div class="logo-slot" id="logoSlot">
+          <img src="../assets/LOGOMDM.png" alt="Médicos del Mañana" id="logoImg">
+          <span class="logo-fallback" id="logoFallback">MDM</span>
+        </div>
+        <div class="topbar-titles">
+          <span class="topbar-title">Expedientes</span>
+          <span class="topbar-sub">Sistema de Gestión</span>
+        </div>
+      </div>
+      <div class="topbar-user">
+        <span class="user-chip" id="userChip">—</span>
+        <button type="button" class="btn-ghost" id="logoutBtn">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <!-- ---------- Columna: lista ---------- -->
+      <section class="list-pane" aria-label="Lista de expedientes">
+        <div class="list-pane-head">
+          <input type="search" id="searchInput" class="search-input" placeholder="Buscar por nombre o DUI…" autocomplete="off">
+          <button type="button" class="btn-primary btn-new" id="newBtn">+ Nuevo</button>
+        </div>
+        <div class="list-scroll" id="listScroll">
+          <div class="list-empty" id="listEmpty">Cargando expedientes…</div>
+          <ul class="expediente-list" id="expedienteList"></ul>
+        </div>
+      </section>
+
+      <!-- ---------- Columna: detalle / formulario ---------- -->
+      <section class="detail-pane" aria-label="Detalle del expediente">
+        <div id="detailEmpty" class="detail-empty">
+          <p>Selecciona un expediente de la lista o crea uno nuevo.</p>
+        </div>
+        <div id="detailContent" class="detail-content hidden"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Diálogo de confirmación de borrado -->
+  <div id="confirmDialog" class="dialog-overlay hidden" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="dialog">
+      <h2 id="confirmTitle">Eliminar expediente</h2>
+      <p id="confirmBody">Esta acción no se puede deshacer.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn-ghost" id="confirmCancel">Cancelar</button>
+        <button type="button" class="btn-danger" id="confirmAccept">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="panel.js"></script>
+</body>
+</html>
