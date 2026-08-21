@@ -1,15 +1,19 @@
+# name = "mdm-sistema-gestion"
+# main = "src/index.js"
+# compatibility_date = "2026-08-20"
+
+
+# directory = "./public"
+# binding = "ASSETS"
+
+
 name = "mdm-sistema-gestion"
 main = "src/index.js"
 compatibility_date = "2026-08-20"
 
-
+[assets]
 directory = "./public"
 binding = "ASSETS"
-
-
-npx wrangler kv namespace create USERS
-npx wrangler kv namespace create SESSIONS
-npx wrangler kv namespace create LOGIN_TRIES
 
 [[kv_namespaces]]
 binding = "USERS"
@@ -22,9 +26,6 @@ id = "29a203994e344827ac74091d3fd03951"
 [[kv_namespaces]]
 binding = "LOGIN_TRIES"
 id = "7a5dc957935a41aba181c1962bf34b4f"
-
-
-npx wrangler d1 create mdm-expedientes
 
 [[d1_databases]]
 binding = "DB"
