@@ -831,7 +831,25 @@ Celebramos estos dos años de trabajo de la mejor manera: sirviendo, compartiend
             </div>
           </div>
         </div>
+        <div class="act-card" data-año="2026" data-programa="capacitaciones">
+          <div class="act-card-img">
+            <img src="imagenes/PrimAuxCRJMDM.jpeg" alt="Capacitación Cruz Roja Juventud">
+            <div class="act-card-badge">
+              <span class="badge-programa prog-capacitaciones">Capacitaciones</span>
+              <span class="badge-año">2026</span>
+            </div>
+          </div>
+          <div class="act-card-body">
+            <span class="act-card-fecha">2026</span>
+            <h3 class="act-card-titulo">Taller de Primeros auxilios básicos en heridas y fracturas simples para los voluntarios de Cruz Roja Juventud</h3>
+            <p class="act-card-desc">Se desarrolló un taller de Primeros Auxilios Básicos en Heridas y Fracturas Simples dirigido a voluntarios de Cruz Roja Juventud, con el objetivo de fortalecer sus conocimientos para la atención inicial de estas lesiones.
 
+La jornada incluyó una sesión teórica y un taller práctico de vendajes, como primer paso de un proceso formativo más amplio que abordará los diferentes tipos de heridas y fracturas.</p>
+            <div class="act-card-tags">
+              <span class="act-tag">Cruz Roja Juventud</span>
+            </div>
+          </div>
+        </div>
         <div class="sin-resultados" id="sin-resultados">
           <span class="emoji">🔍</span>
           <h3>No hay actividades con esos filtros</h3>
@@ -891,26 +909,40 @@ Celebramos estos dos años de trabajo de la mejor manera: sirviendo, compartiend
   <script>
     AOS.init({ duration: 900, once: true });
 
-    const toggle = document.getElementById('menu-toggle');
-    const navbar = document.getElementById('navbar');
-    toggle.addEventListener('click', () => {
-      const isOpen = navbar.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-    });
+const filtrosWrapper = document.querySelector('.filtros-wrapper');
+const UMBRAL = 80;
 
-    const filtrosWrapper = document.querySelector('.filtros-wrapper');
-    let lastScroll = 0;
-    const UMBRAL = 80;
+window.addEventListener('scroll', () => {
+  if (window.scrollY > UMBRAL) {
+    filtrosWrapper.classList.add('oculto');
+  } else {
+    filtrosWrapper.classList.remove('oculto');
+  }
+}, { passive: true });
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
 
-    window.addEventListener('scroll', () => {
-      const current = window.scrollY;
-      if (current > UMBRAL && current > lastScroll) {
-        filtrosWrapper.classList.add('oculto');
+  window.requestAnimationFrame(() => {
+    const current = window.scrollY;
+    const diff = current - lastScroll;
+
+    if (current <= UMBRAL) {
+      // Cerca del tope: siempre visible
+      filtrosWrapper.classList.remove('oculto');
+      lastScroll = current;
+    } else if (Math.abs(diff) > DELTA_MIN) {
+      if (diff > 0) {
+        filtrosWrapper.classList.add('oculto');   // bajando de verdad
       } else {
-        filtrosWrapper.classList.remove('oculto');
+        filtrosWrapper.classList.remove('oculto'); // subiendo de verdad
       }
       lastScroll = current;
-    }, { passive: true });
+    }
+
+    ticking = false;
+  });
+}, { passive: true });
 
     let filtroAño      = 'todos';
     let filtroPrograma = 'todos';
